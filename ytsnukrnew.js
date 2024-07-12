@@ -296,7 +296,7 @@ class Cue extends Edge {
             this.tip.x = l1.x;
             this.tip.y = l1.y;
         }
-        
+
     }
     
     render(){
@@ -309,6 +309,7 @@ class Cue extends Edge {
         
       
         ellipse(this.pos.x, this.pos.y, this.wid, this.wid);
+
     }
     
     checkStrike(_b){
@@ -316,7 +317,7 @@ class Cue extends Edge {
         if (cueBsunk){
         let dist = p5.Vector.sub(_b.pos, this.pos);
         let mDist = dist.mag();
-        
+
         if (mDist < _b.rad + (this.wid/2)){
     
             _b.acc = dist.mult(0.1);
@@ -326,12 +327,12 @@ class Cue extends Edge {
             let dist = p5.Vector.sub(_b.pos, this.tip);
             let mDist = dist.mag();
         
-        if (mDist < _b.rad + 9){
-            
-             // Pauli exclusion!
-            dist = dist.normalize();
-            _b.acc = dist.mult(3.14);
-        }
+            if (mDist < _b.rad + 9){
+                
+                // Pauli exclusion!
+                dist = dist.normalize();
+                _b.acc = dist.mult(3.14);
+            }
         }
         
     }
